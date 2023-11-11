@@ -1,0 +1,89 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class npcScript : MonoBehaviour
+{
+    [SerializeField] private MainScript MScript;
+    [SerializeField] private GameObject DialogUINPCPanel;
+    [SerializeField] private GameObject DialogUIPLAYERPanel;
+    [SerializeField] private TMPro.TextMeshProUGUI DialogUINPC;
+    [SerializeField] private TMPro.TextMeshProUGUI DialogUIPLAYER;
+    [SerializeField] private GameObject AnswerUI;
+    [SerializeField] private Player GPlayer;
+    [HideInInspector] public bool PlayerStay = false;
+    [HideInInspector] public bool DialogReady = false;
+    [SerializeField] public List<int> StepDialog = new List<int>();
+
+    private void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (PlayerStay == true && StepDialog.Contains(MainScript.step))
+        {
+            AnswerUI.SetActive(true);
+            if (Input.GetButtonDown("Submit"))
+            {
+                Debug.Log("KEKE");
+                Dialog();
+                MainScript.step += 1;
+                Debug.Log(MainScript.step);
+                AnswerUI.SetActive(false);
+            }
+        }
+    }
+    void Dialog()
+    {
+        switch (MainScript.step)
+        {
+            case 0:
+                StartCoroutine(Step0());
+                break;
+            case 1:
+                StartCoroutine(Step1());
+                break;
+            default:
+                break;
+        }
+    }
+    IEnumerator DialogPlayer(string text, int time)
+    {
+        DialogUIPLAYERPanel.SetActive(true);
+        DialogUIPLAYER.text = text;
+        yield return new WaitForSeconds(time);
+        DialogUIPLAYERPanel.SetActive(false);
+    }
+    IEnumerator DialogNPC(string text, int time)
+    {
+        DialogUINPCPanel.SetActive(true);
+        DialogUINPCPanel.transform.position = transform.position;
+        DialogUINPCPanel.transform.position = new Vector2(transform.position.x, transform.position.y + 3.3f);
+        DialogUINPC.text = text;
+        yield return new WaitForSeconds(time);
+        DialogUINPCPanel.SetActive(false);
+    }
+
+    IEnumerator Step0()
+    {
+        GPlayer.inputOn = false;
+        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 0], 3));
+        yield return StartCoroutine(DialogNPC(DilogList1.mother[MainScript.language, 0], 3));
+        GPlayer.inputOn = true;
+        MScript.DoorOpen();
+    }
+
+    IEnumerator Step1()
+    {
+        GPlayer.inputOn = false;
+        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 1], 3));
+        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 0], 3));
+        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 2], 3));
+        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 1], 3));
+        GPlayer.inputOn = true;
+    }
+}
