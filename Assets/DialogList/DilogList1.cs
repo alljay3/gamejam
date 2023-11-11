@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,20 +6,20 @@ using UnityEngine;
 public class DilogList1
 {
     public static string[,] mother = {
-        {"Я тоже люблю тебя! ","да конечно, сходи погуляй"},
+        {"РЇ С‚РѕР¶Рµ Р»СЋР±Р»СЋ С‚РµР±СЏ! ","РґР° РєРѕРЅРµС‡РЅРѕ, СЃС…РѕРґРё РїРѕРіСѓР»СЏР№"},
         {"I love you too!","yes of course, go for a walk"}
     };
 
 
 
     public static string[,] player = {
-        {"Привет мам, люблю тебя" ,"Можно я пойду погуляю со своим другом Руланом?", "Дарова, чем сегодня займемся?", "Что это?"},
+        {"РџСЂРёРІРµС‚ РјР°Рј, Р»СЋР±Р»СЋ С‚РµР±СЏ" ,"РњРѕР¶РЅРѕ СЏ РїРѕР№РґСѓ РїРѕРіСѓР»СЏСЋ СЃРѕ СЃРІРѕРёРј РґСЂСѓРіРѕРј Р СѓР»Р°РЅРѕРј?", "Р”Р°СЂРѕРІР°, С‡РµРј СЃРµРіРѕРґРЅСЏ Р·Р°Р№РјРµРјСЃСЏ?", "Р§С‚Рѕ СЌС‚Рѕ?"},
         {"Hi Mom, I love you"," Can i go for a walk with my friend Ruslan?", "Hi, what are we going to do today?", "What is it?"}
     };
 
 
     public static string[,] friend = {
-        {"Дарова, дарова, крч, у меня тут такая штука убойная попалась, щас ахуеешь", "А вот попробуй и узнаешь :)"},
+        {"Р”Р°СЂРѕРІР°, РґР°СЂРѕРІР°, РєСЂС‡, Сѓ РјРµРЅСЏ С‚СѓС‚ С‚Р°РєР°СЏ С€С‚СѓРєР° СѓР±РѕР№РЅР°СЏ РїРѕРїР°Р»Р°СЃСЊ, С‰Р°СЃ Р°С…СѓРµРµС€СЊ", "Рђ РІРѕС‚ РїРѕРїСЂРѕР±СѓР№ Рё СѓР·РЅР°РµС€СЊ :)"},
         {"Hello, hello, I've got such a killer thing here, right now you're fucking", "But try and find out :)"}
     };
 } 
