@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class npcScript : MonoBehaviour
 {
+    [SerializeField] private GameObject mainCamera;
     [SerializeField] private MainScript MScript;
     [SerializeField] private GameObject DialogUINPCPanel;
     [SerializeField] private GameObject DialogUIPLAYERPanel;
@@ -15,6 +17,10 @@ public class npcScript : MonoBehaviour
     [HideInInspector] public bool PlayerStay = false;
     [HideInInspector] public bool DialogReady = false;
     [SerializeField] public List<int> StepDialog = new List<int>();
+    [SerializeField] private float SpeedDialog = 1;
+    [SerializeField] private AudioSource music;
+    [SerializeField] private AudioSource sound;
+    [SerializeField] private AudioClip [] AudioClips;
 
     private void Start()
     {
@@ -34,6 +40,7 @@ public class npcScript : MonoBehaviour
                 MainScript.step += 1;
                 Debug.Log(MainScript.step);
                 AnswerUI.SetActive(false);
+                GPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
         }
     }
@@ -51,14 +58,14 @@ public class npcScript : MonoBehaviour
                 break;
         }
     }
-    IEnumerator DialogPlayer(string text, int time)
+    IEnumerator DialogPlayer(string text, float time)
     {
         DialogUIPLAYERPanel.SetActive(true);
         DialogUIPLAYER.text = text;
         yield return new WaitForSeconds(time);
         DialogUIPLAYERPanel.SetActive(false);
     }
-    IEnumerator DialogNPC(string text, int time)
+    IEnumerator DialogNPC(string text, float time)
     {
         DialogUINPCPanel.SetActive(true);
         DialogUINPCPanel.transform.position = transform.position;
@@ -68,11 +75,25 @@ public class npcScript : MonoBehaviour
         DialogUINPCPanel.SetActive(false);
     }
 
+    IEnumerator UpCamera()
+    {
+        int count = 0;
+        while(count < 600)
+        {
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 0.02f, mainCamera.transform.position.z);
+            yield return new WaitForSeconds(0.01f);
+            count += 1;
+        }
+    }
+
     IEnumerator Step0()
     {
         GPlayer.inputOn = false;
-        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 0], 3));
-        yield return StartCoroutine(DialogNPC(DilogList1.mother[MainScript.language, 0], 3));
+        gameObject.GetComponent<AudioSource>().Play();
+        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 0], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DilogList1.mother[MainScript.language, 0], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 1], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DilogList1.mother[MainScript.language, 1], 2 * SpeedDialog));
         GPlayer.inputOn = true;
         MScript.DoorOpen();
     }
@@ -80,10 +101,12 @@ public class npcScript : MonoBehaviour
     IEnumerator Step1()
     {
         GPlayer.inputOn = false;
-        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 1], 3));
-        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 0], 3));
-        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 2], 3));
-        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 1], 3));
+        gameObject.GetComponent<AudioSource>().Play();
+        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 2], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 0], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 3], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 1], 2 * SpeedDialog));
+        yield return StartCoroutine(UpCamera());
         GPlayer.inputOn = true;
     }
 }
