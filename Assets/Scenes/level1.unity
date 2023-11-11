@@ -1002,9 +1002,9 @@ MonoBehaviour:
   DialogReady: 0
   StepDialog: 01000000
   SpeedDialog: 1
-  music: {fileID: 0}
-  sound: {fileID: 0}
-  AudioClips: []
+  music: {fileID: 1360223254}
+  AudioClips:
+  - {fileID: 8300000, guid: 21c6f1ffea2de4a4794b7ac1ed353d49, type: 3}
 --- !u!4 &726757177
 Transform:
   m_ObjectHideFlags: 0
@@ -1789,7 +1789,6 @@ MonoBehaviour:
   StepDialog: 0000000004000000050000000700000008000000
   SpeedDialog: 1
   music: {fileID: 0}
-  sound: {fileID: 0}
   AudioClips: []
 --- !u!82 &1083478096
 AudioSource:

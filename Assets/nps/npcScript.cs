@@ -18,8 +18,7 @@ public class npcScript : MonoBehaviour
     [HideInInspector] public bool DialogReady = false;
     [SerializeField] public List<int> StepDialog = new List<int>();
     [SerializeField] private float SpeedDialog = 1;
-    [SerializeField] private AudioSource music;
-    [SerializeField] private AudioSource sound;
+    [SerializeField] public AudioSource music;
     [SerializeField] private AudioClip [] AudioClips;
 
     private void Start()
@@ -106,6 +105,9 @@ public class npcScript : MonoBehaviour
         yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 0], 2 * SpeedDialog));
         yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 3], 2 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 1], 2 * SpeedDialog));
+        music.clip = AudioClips[0];
+        music.Play();
+        music.loop = false;
         yield return StartCoroutine(UpCamera());
         GPlayer.inputOn = true;
     }
