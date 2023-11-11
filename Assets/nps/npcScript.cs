@@ -20,6 +20,7 @@ public class npcScript : MonoBehaviour
     [SerializeField] private float SpeedDialog = 1;
     [SerializeField] public AudioSource music;
     [SerializeField] private AudioClip [] AudioClips;
+    [SerializeField] private GameObject[] OtherObjects;
 
     private void Start()
     {
@@ -95,6 +96,7 @@ public class npcScript : MonoBehaviour
         yield return StartCoroutine(DialogNPC(DilogList1.mother[MainScript.language, 1], 2 * SpeedDialog));
         GPlayer.inputOn = true;
         MScript.DoorOpen();
+        OtherObjects[0].GetComponent<AudioSource>().Play();
     }
 
     IEnumerator Step1()
