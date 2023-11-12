@@ -73,6 +73,9 @@ public class npcScript : MonoBehaviour
             case 150:
                 StartCoroutine(Step150());
                 break;
+            case 200:
+                StartCoroutine(Step200());
+                break;
             default:
                 break;
         }
@@ -104,6 +107,12 @@ public class npcScript : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             count += 1;
         }
+    }
+
+    IEnumerator Exit()
+    {
+        yield return new WaitForSeconds(10);
+        Application.Quit();
     }
 
 
@@ -259,5 +268,28 @@ public class npcScript : MonoBehaviour
             OtherObjects[0].SetActive(true);
             GPlayer.inputOn = true;
         }
+    }
+
+    IEnumerator Step200()
+    {
+        GPlayer.inputOn = false;
+        GPlayer.GetComponent<Animator>().Play("Hold");
+        yield return StartCoroutine(DialogPlayer(DialogListWin.player[MainScript.language, 0], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogListWin.player[MainScript.language, 1], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogListWin.player[MainScript.language, 2], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogListWin.player[MainScript.language, 3], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogListWin.player[MainScript.language, 4], 4 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogListWin.player[MainScript.language, 5], 4 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogListWin.player[MainScript.language, 6], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogListWin.player[MainScript.language, 7], 2 * SpeedDialog));
+        GPlayer.inputOn = true;
+        yield return StartCoroutine(Exit());
     }
 }
