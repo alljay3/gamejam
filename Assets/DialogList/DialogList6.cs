@@ -13,7 +13,7 @@ public class DialogList6 : MonoBehaviour
 
     public static string[,] player = {
         {"Я смог мам!", "Я больше никогда не притронусь к этой гадости. Обещаю тебе!!!", "Я тебя тоже...", "Я надеюсь дурь отменная?", "Сколько я тебе должен?", "Спасибо..."},
-        {"I could Mom!","I'll never touch that stuff again. I promise you!!!","Me you too...","I hope the drugs are excellent?", "Сколько я тебе должен?","Thank you..."}
+        {"I could Mom!","I'll never touch that stuff again. I promise you!!!","Me you too...","I hope the drugs are excellent?", "How much do I owe you?","Thank you..."}
     };
 
 

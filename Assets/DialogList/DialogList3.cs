@@ -6,7 +6,7 @@ public class DialogList3 : MonoBehaviour
 {
     public static string[,] player = {
         {"Здарово, как дела?" ,"Да, действительно, нынче травку слабую продавать стали", "Давай, рассказывай, ты же знаешь, я за любой кипиш","Воу, не плохо, я в деле"},
-        {"Hi, how are you?","Yes, indeed, today they began to sell weak grass", "Come on, tell me, you know, I'm for any kipish", "Whoa, not bad, I'm in"}
+        {"Hi, how are you?","Yes, indeed, today they began to sell weak grass", "Come on, tell me, you know, I'm for any move", "Whoa, not bad, I'm in"}
     };
 
 

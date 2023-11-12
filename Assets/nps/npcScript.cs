@@ -112,6 +112,7 @@ public class npcScript : MonoBehaviour
         GPlayer.inputOn = false;
         gameObject.GetComponent<AudioSource>().Play();
         gameObject.GetComponent<Animator>().Play("Hold");
+        GPlayer.GetComponent<Animator>().Play("Hold");
         yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 0], 2 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DilogList1.mother[MainScript.language, 0], 2 * SpeedDialog));
         yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 1], 2 * SpeedDialog));
@@ -125,6 +126,7 @@ public class npcScript : MonoBehaviour
     {
         GPlayer.inputOn = false;
         gameObject.GetComponent<AudioSource>().Play();
+        GPlayer.GetComponent<Animator>().Play("Hold");
         gameObject.GetComponent<Animator>().Play("Hold");
         yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 2], 2 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 0], 2 * SpeedDialog));
@@ -143,6 +145,7 @@ public class npcScript : MonoBehaviour
     IEnumerator Step2()
     {
         GPlayer.inputOn = false;
+        GPlayer.GetComponent<Animator>().Play("Hold");
         gameObject.GetComponent<AudioSource>().Play();
         gameObject.GetComponent<Animator>().Play("Hold");
         yield return StartCoroutine(DialogNPC(DialogList2.mother[MainScript.language, 0], 2 * SpeedDialog));
@@ -164,6 +167,7 @@ public class npcScript : MonoBehaviour
     IEnumerator Step3()
     {
         GPlayer.inputOn = false;
+        GPlayer.GetComponent<Animator>().Play("Hold");
         gameObject.GetComponent<AudioSource>().Play();
         gameObject.GetComponent<Animator>().Play("Hold");
         yield return StartCoroutine(DialogPlayer(DialogList3.player[MainScript.language, 0], 3 * SpeedDialog));
@@ -180,6 +184,7 @@ public class npcScript : MonoBehaviour
     IEnumerator Step4()
     {
         GPlayer.inputOn = false;
+        GPlayer.GetComponent<Animator>().Play("Hold");
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 0], 3 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 0], 2 * SpeedDialog));
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 1], 3 * SpeedDialog));
@@ -225,6 +230,7 @@ public class npcScript : MonoBehaviour
         if (gameObject.tag == "Mother")
         {
             GPlayer.inputOn = false;
+            GPlayer.GetComponent<Animator>().Play("Hold");
             OtherObjects[1].GetComponent<FinalyBox>().IsReady = false;
             OtherObjects[2].SetActive(false);
             GPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -243,6 +249,7 @@ public class npcScript : MonoBehaviour
         else
         {
             GPlayer.inputOn = false;
+            GPlayer.GetComponent<Animator>().Play("Hold");
             gameObject.GetComponent<AudioSource>().Play();
             gameObject.GetComponent<Animator>().Play("Hold");
             yield return StartCoroutine(DialogPlayer(DialogList6.player[MainScript.language, 3], 3 * SpeedDialog));
