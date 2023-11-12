@@ -67,6 +67,9 @@ public class npcScript : MonoBehaviour
             case 4:
                 StartCoroutine(Step4());
                 break;
+            case 100:
+                StartCoroutine(Step100());
+                break;
             default:
                 break;
         }
@@ -188,6 +191,28 @@ public class npcScript : MonoBehaviour
         gameObject.GetComponent<AudioSource>().clip = AudioClips[0];
         gameObject.GetComponent<AudioSource>().Play();
         gameObject.GetComponent<Animator>().Play("Kashel");
+        OtherObjects[0].SetActive(true);
+        GPlayer.inputOn = true;
+    }
+
+    IEnumerator Step100()
+    {
+        GPlayer.inputOn = false;
+        GPlayer.GetComponent<Animator>().Play("Plach");
+        yield return StartCoroutine(DialogPlayer(DialogList5.player[MainScript.language, 0], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogList5.player[MainScript.language, 1], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogList5.player[MainScript.language, 2], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogList5.player[MainScript.language, 3], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogList5.player[MainScript.language, 4], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogList5.player[MainScript.language, 5], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(DialogPlayer(DialogList5.player[MainScript.language, 6], 2 * SpeedDialog));
+        yield return new WaitForSeconds(1);
         OtherObjects[0].SetActive(true);
         GPlayer.inputOn = true;
     }

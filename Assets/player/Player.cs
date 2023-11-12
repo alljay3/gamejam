@@ -10,7 +10,11 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject Bounse;
     private bool _moveRight = false;
     private bool _lastMoveRight = true;
-    
+
+
+    private void Start()
+    {
+    }
 
     public void Update()
     {
@@ -27,13 +31,13 @@ public class Player : MonoBehaviour
             {
                 _moveRight = false;
             }
+            if (gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
+            {
+                GetComponent<Animator>().Play("Run");
+            }
+            else
+                GetComponent<Animator>().Play("Hold");
         }
-        if (gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
-        {
-            GetComponent<Animator>().Play("Run");
-        }
-        else
-            GetComponent<Animator>().Play("Hold");
 
 
         if (_moveRight && !_lastMoveRight)
