@@ -12,7 +12,7 @@ public class npcScript : MonoBehaviour
     [SerializeField] private GameObject DialogUIPLAYERPanel;
     [SerializeField] private TMPro.TextMeshProUGUI DialogUINPC;
     [SerializeField] private TMPro.TextMeshProUGUI DialogUIPLAYER;
-    [SerializeField] private GameObject AnswerUI;
+    [SerializeField] public GameObject AnswerUI;
     [SerializeField] private Player GPlayer;
     [HideInInspector] public bool PlayerStay = false;
     [HideInInspector] public bool DialogReady = false;

@@ -17,6 +17,7 @@ public class TriggerScript : MonoBehaviour
         if (collision.tag == "Player")
         {
             NPC.PlayerStay = false;
+            NPC.AnswerUI.SetActive(false);
         }
     }
 }
