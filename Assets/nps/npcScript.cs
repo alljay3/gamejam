@@ -70,6 +70,9 @@ public class npcScript : MonoBehaviour
             case 100:
                 StartCoroutine(Step100());
                 break;
+            case 150:
+                StartCoroutine(Step150());
+                break;
             default:
                 break;
         }
@@ -85,11 +88,12 @@ public class npcScript : MonoBehaviour
     {
         DialogUINPCPanel.SetActive(true);
         DialogUINPCPanel.transform.position = transform.position;
-        DialogUINPCPanel.transform.position = new Vector2(transform.position.x, transform.position.y + 3.3f);
+        DialogUINPCPanel.transform.position = new Vector2(transform.position.x, transform.position.y + 3.1f);
         DialogUINPC.text = text;
         yield return new WaitForSeconds(time);
         DialogUINPCPanel.SetActive(false);
     }
+
 
     IEnumerator UpCamera()
     {
@@ -215,5 +219,38 @@ public class npcScript : MonoBehaviour
         yield return new WaitForSeconds(1);
         OtherObjects[0].SetActive(true);
         GPlayer.inputOn = true;
+    }
+    IEnumerator Step150()
+    {
+        if (gameObject.tag == "Mother")
+        {
+            GPlayer.inputOn = false;
+            OtherObjects[1].GetComponent<FinalyBox>().IsReady = false;
+            OtherObjects[2].SetActive(false);
+            GPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            gameObject.GetComponent<AudioSource>().Play();
+            gameObject.GetComponent<Animator>().Play("Hold");
+            GPlayer.GetComponent<Animator>().Play("Hold");
+            yield return StartCoroutine(DialogPlayer(DialogList6.player[MainScript.language, 0], 2 * SpeedDialog));
+            yield return StartCoroutine(DialogNPC(DialogList6.mother[MainScript.language, 0], 2 * SpeedDialog));
+            yield return StartCoroutine(DialogPlayer(DialogList6.player[MainScript.language, 1], 2 * SpeedDialog));
+            yield return StartCoroutine(DialogNPC(DialogList6.mother[MainScript.language, 1], 2 * SpeedDialog));
+            yield return StartCoroutine(DialogPlayer(DialogList6.player[MainScript.language, 2], 2 * SpeedDialog));
+            OtherObjects[0].SetActive(true);
+            
+            GPlayer.inputOn = true;
+        }
+        else
+        {
+            GPlayer.inputOn = false;
+            gameObject.GetComponent<AudioSource>().Play();
+            gameObject.GetComponent<Animator>().Play("Hold");
+            yield return StartCoroutine(DialogPlayer(DialogList6.player[MainScript.language, 3], 3 * SpeedDialog));
+            yield return StartCoroutine(DialogNPC(DialogList6.friend[MainScript.language, 0], 3 * SpeedDialog));
+            yield return StartCoroutine(DialogPlayer(DialogList6.player[MainScript.language, 4], 3 * SpeedDialog));
+            yield return StartCoroutine(DialogNPC(DialogList6.friend[MainScript.language, 1], 3 * SpeedDialog));
+            OtherObjects[0].SetActive(true);
+            GPlayer.inputOn = true;
+        }
     }
 }
