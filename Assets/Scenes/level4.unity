@@ -1639,6 +1639,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5c520a228363a3348bac7a5bebf5a4e5, type: 3}
   OtherObjects:
   - {fileID: 1179452248}
+  - {fileID: 914962663}
   StartAnim: Plach
 --- !u!4 &730386292
 Transform:
@@ -1793,6 +1794,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745469392}
   m_CullTransparentMesh: 1
+--- !u!4 &818490010 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1447206975777293173, guid: 0789c4b25e2d79c4390a8ac6d2ec36c4, type: 3}
+  m_PrefabInstance: {fileID: 426443461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &835071103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,12 +1981,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914962663}
-  m_LocalRotation: {x: -0, y: -0, z: 0.27045232, w: 0.96273345}
-  m_LocalPosition: {x: 0.29, y: 0.18, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.40705344, w: 0.91340435}
+  m_LocalPosition: {x: 0.103474066, y: 0.04120726, z: 0}
+  m_LocalScale: {x: 0.52317446, y: 0.52317446, z: 0.52317435}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1054710488}
+  m_Father: {fileID: 818490010}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &914962665
@@ -2023,7 +2029,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 44c807ce2f6ae7c438d3b0f6fbfe31db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2358,11 +2364,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1054710488 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7796712431219789332, guid: 0789c4b25e2d79c4390a8ac6d2ec36c4, type: 3}
-  m_PrefabInstance: {fileID: 426443461}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1097823806
 GameObject:
   m_ObjectHideFlags: 0
@@ -5280,7 +5281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1875199087
 RectTransform:
   m_ObjectHideFlags: 0

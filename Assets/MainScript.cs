@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainScript : MonoBehaviour
 {
     public static int step = 0;
-    public static int language = 1;
+    public static int language = 0;
     public int SetStep = 0;
 
     [SerializeField] GameObject doorOpen;

@@ -199,15 +199,19 @@ public class npcScript : MonoBehaviour
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 0], 3 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 0], 2 * SpeedDialog));
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 1], 3 * SpeedDialog));
+        OtherObjects[1].SetActive(true);
+        gameObject.GetComponent<Animator>().Play("Hold");
         yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 1], 3 * SpeedDialog));
-        gameObject.GetComponent<AudioSource>().clip = AudioClips[0];
-        gameObject.GetComponent<AudioSource>().Play();
-        gameObject.GetComponent<Animator>().Play("Kashel");
+
+
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 2], 3 * SpeedDialog));
         gameObject.GetComponent<Animator>().Play("Hold");
         yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 2], 4 * SpeedDialog));
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 3], 4 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 3], 2 * SpeedDialog));
+
+        OtherObjects[1].SetActive(false);
+
         gameObject.GetComponent<AudioSource>().clip = AudioClips[0];
         gameObject.GetComponent<AudioSource>().Play();
         gameObject.GetComponent<Animator>().Play("Kashel");
