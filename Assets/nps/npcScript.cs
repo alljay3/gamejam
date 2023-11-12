@@ -121,6 +121,12 @@ public class npcScript : MonoBehaviour
     }
 
 
+    public void GetDrug()
+    {
+
+        OtherObjects[1].SetActive(true);
+    }
+
     IEnumerator Step0()
     {
         GPlayer.inputOn = false;
@@ -207,9 +213,10 @@ public class npcScript : MonoBehaviour
 
 
         gameObject.GetComponent<Animator>().Play("Ger_output");
-        OtherObjects[1].SetActive(true);
 
         yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 1], 3 * SpeedDialog));
+
+
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 2], 3 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 2], 4 * SpeedDialog));
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 3], 4 * SpeedDialog));
