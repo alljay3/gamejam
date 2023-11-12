@@ -21,10 +21,14 @@ public class npcScript : MonoBehaviour
     [SerializeField] public AudioSource music;
     [SerializeField] private AudioClip [] AudioClips;
     [SerializeField] private GameObject[] OtherObjects;
+    [SerializeField] private string StartAnim;
 
     private void Start()
     {
-        
+        if (StartAnim != null)
+        {
+            GetComponent<Animator>().Play(StartAnim);
+        }
     }
 
     // Update is called once per frame
@@ -53,6 +57,15 @@ public class npcScript : MonoBehaviour
                 break;
             case 1:
                 StartCoroutine(Step1());
+                break;
+            case 2:
+                StartCoroutine(Step2());
+                break;
+            case 3:
+                StartCoroutine(Step3());
+                break;
+            case 4:
+                StartCoroutine(Step4());
                 break;
             default:
                 break;
@@ -86,10 +99,12 @@ public class npcScript : MonoBehaviour
         }
     }
 
+
     IEnumerator Step0()
     {
         GPlayer.inputOn = false;
         gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<Animator>().Play("Hold");
         yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 0], 2 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DilogList1.mother[MainScript.language, 0], 2 * SpeedDialog));
         yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 1], 2 * SpeedDialog));
@@ -103,14 +118,77 @@ public class npcScript : MonoBehaviour
     {
         GPlayer.inputOn = false;
         gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<Animator>().Play("Hold");
         yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 2], 2 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 0], 2 * SpeedDialog));
+        OtherObjects[0].GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<Animator>().Play("Drug");
         yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 3], 2 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 1], 2 * SpeedDialog));
         music.clip = AudioClips[0];
         music.Play();
         music.loop = false;
         yield return StartCoroutine(UpCamera());
+        yield return new  WaitForSeconds(3);
+        SceneManager.LoadScene("Level2");
+        GPlayer.inputOn = true;
+    }
+    IEnumerator Step2()
+    {
+        GPlayer.inputOn = false;
+        gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<Animator>().Play("Hold");
+        yield return StartCoroutine(DialogNPC(DialogList2.mother[MainScript.language, 0], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList2.player[MainScript.language, 0], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList2.mother[MainScript.language, 1], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList2.player[MainScript.language, 1], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList2.mother[MainScript.language, 2], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList2.player[MainScript.language, 2], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList2.mother[MainScript.language, 3], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList2.player[MainScript.language, 3], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList2.mother[MainScript.language, 4], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList2.player[MainScript.language, 4], 2 * SpeedDialog));
+        gameObject.GetComponent<AudioSource>().clip = AudioClips[0];
+        gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<Animator>().Play("Kashel");
+        OtherObjects[0].SetActive(true);
+        GPlayer.inputOn = true;
+    }
+    IEnumerator Step3()
+    {
+        GPlayer.inputOn = false;
+        gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<Animator>().Play("Hold");
+        yield return StartCoroutine(DialogPlayer(DialogList3.player[MainScript.language, 0], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList3.friend[MainScript.language, 0], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList3.player[MainScript.language, 1], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList3.friend[MainScript.language, 1], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList3.player[MainScript.language, 2], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList3.friend[MainScript.language, 2], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList3.player[MainScript.language, 3], 3 * SpeedDialog));
+        GPlayer.inputOn = true;
+        OtherObjects[0].SetActive(true);
+    }
+
+    IEnumerator Step4()
+    {
+        GPlayer.inputOn = false;
+        yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 0], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 0], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 1], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 1], 3 * SpeedDialog));
+        gameObject.GetComponent<AudioSource>().clip = AudioClips[0];
+        gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<Animator>().Play("Kashel");
+        yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 2], 3 * SpeedDialog));
+        gameObject.GetComponent<Animator>().Play("Hold");
+        yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 2], 4 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 3], 4 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 3], 2 * SpeedDialog));
+        gameObject.GetComponent<AudioSource>().clip = AudioClips[0];
+        gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<Animator>().Play("Kashel");
+        OtherObjects[0].SetActive(true);
         GPlayer.inputOn = true;
     }
 }
