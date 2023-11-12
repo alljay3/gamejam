@@ -194,6 +194,8 @@ public class npcScript : MonoBehaviour
     {
         GPlayer.inputOn = false;
         GPlayer.GetComponent<Animator>().Play("Hold");
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().loop = false;
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 0], 3 * SpeedDialog));
         yield return StartCoroutine(DialogNPC(DialogList4.mother[MainScript.language, 0], 2 * SpeedDialog));
         yield return StartCoroutine(DialogPlayer(DialogList4.player[MainScript.language, 1], 3 * SpeedDialog));
