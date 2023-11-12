@@ -2484,7 +2484,7 @@ MonoBehaviour:
   music: {fileID: 0}
   AudioClips: []
   OtherObjects:
-  - {fileID: 1696541231}
+  - {fileID: 1278193840}
   StartAnim: 
 --- !u!82 &1083478096
 AudioSource:
@@ -4599,6 +4599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door2
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 886bcd938bd67fa438e566b441729554, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 886bcd938bd67fa438e566b441729554, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -4960,7 +4964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2038488823
 Transform:
   m_ObjectHideFlags: 0
