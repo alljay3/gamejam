@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
             }
             if (gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
             {
-                GetComponent<Animator>().Play("Run");
+                GetComponent<Animator>().Play("Run2");
             }
             else
                 GetComponent<Animator>().Play("Hold");
