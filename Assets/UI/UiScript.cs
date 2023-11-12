@@ -9,6 +9,7 @@ public class UiScript : MonoBehaviour
     [SerializeField] GameObject Chapter;
     public void PlayerInputOn()
     {
+        if (GPlayer != null)
         GPlayer.inputOn = true;
     }
     public void PlayerInputOff()
