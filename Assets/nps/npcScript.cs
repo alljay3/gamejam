@@ -148,12 +148,12 @@ public class npcScript : MonoBehaviour
         gameObject.GetComponent<AudioSource>().Play();
         GPlayer.GetComponent<Animator>().Play("Hold");
         gameObject.GetComponent<Animator>().Play("Hold");
-        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 2], 2 * SpeedDialog));
-        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 0], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 2], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 0], 3 * SpeedDialog));
         OtherObjects[0].GetComponent<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<Animator>().Play("Drug");
-        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 3], 2 * SpeedDialog));
-        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 1], 2 * SpeedDialog));
+        yield return StartCoroutine(DialogPlayer(DilogList1.player[MainScript.language, 3], 3 * SpeedDialog));
+        yield return StartCoroutine(DialogNPC(DilogList1.friend[MainScript.language, 1], 3 * SpeedDialog));
         music.clip = AudioClips[0];
         music.Play();
         music.loop = false;
